@@ -1,0 +1,77 @@
+<section class="work" id="trabajos">
+  <div class="u-container">
+    <div class="section-label">
+      <span class="section-label__kanji">{{ i18n.content().work.kanji }}</span>
+      <span class="section-label__text">{{ i18n.content().work.label }}</span>
+      <span class="section-label__rule" aria-hidden="true"></span>
+    </div>
+
+    <header class="work__head">
+      <h2 class="work__title" appReveal>{{ i18n.content().work.title }}</h2>
+      <p class="work__note" appReveal>{{ i18n.content().work.note }}</p>
+    </header>
+
+    <div class="work__tabs" role="tablist" [attr.aria-label]="i18n.content().ui.workTabs">
+      @for (group of groups(); track group.id; let i = $index) {
+        <button
+          #tabBtn
+          type="button"
+          class="work__tab"
+          role="tab"
+          [id]="'work-tab-' + group.id"
+          [attr.aria-selected]="isActive(group)"
+          [attr.aria-controls]="'work-panel-' + group.id"
+          [attr.tabindex]="isActive(group) ? 0 : -1"
+          [class.is-active]="isActive(group)"
+          (click)="select(group.id)"
+          (keydown)="onTabKeydown($event, i)"
+        >
+          <span class="work__tab-kanji" aria-hidden="true">{{ group.kanji }}</span>
+          <span class="work__tab-label">{{ group.label }}</span>
+          <span class="work__tab-count">{{ group.projects.length }}</span>
+        </button>
+      }
+    </div>
+
+    @for (group of groups(); track group.id) {
+      <div
+        class="work__panel"
+        role="tabpanel"
+        [id]="'work-panel-' + group.id"
+        [attr.aria-labelledby]="'work-tab-' + group.id"
+        [hidden]="!isActive(group)"
+      >
+        <p class="work__panel-note">{{ group.note }}</p>
+
+        <ol class="work__list">
+          @for (project of group.projects; track project.name) {
+            <li class="work__item">
+              <a class="work__link" [href]="project.href" target="_blank" rel="noopener noreferrer">
+                <span class="work__num">{{ project.index }}</span>
+
+                <span class="work__main">
+                  <span class="work__name">
+                    {{ project.name }}
+                    <span class="work__kanji" aria-hidden="true">{{ project.kanji }}</span>
+                  </span>
+                  <span class="work__role">{{ project.role }}</span>
+                  <span class="work__summary">{{ project.summary }}</span>
+                  <span class="work__tags">
+                    @for (tag of project.tags; track tag) {
+                      <span class="tag">{{ tag }}</span>
+                    }
+                  </span>
+                </span>
+
+                <span class="work__meta">
+                  <span class="work__year">{{ project.year ?? project.site }}</span>
+                  <span class="work__arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+            </li>
+          }
+        </ol>
+      </div>
+    }
+  </div>
+</section>

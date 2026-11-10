@@ -1,0 +1,50 @@
+<section class="contact" id="contacto">
+  <div class="u-container">
+    <div class="section-label">
+      <span class="section-label__kanji">{{ i18n.content().contact.kanji }}</span>
+      <span class="section-label__text">{{ i18n.content().contact.label }}</span>
+      <span class="section-label__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="contact__grid">
+      <div class="contact__intro">
+        <h2 class="contact__title" appReveal>{{ i18n.content().contact.title }}</h2>
+        <p class="contact__lead" appReveal>{{ i18n.content().contact.lead }}</p>
+      </div>
+
+      <div class="contact__actions">
+        <a class="contact__mail" [href]="'mailto:' + i18n.profile.email" appReveal>
+          <span class="contact__mail-label">{{ i18n.content().contact.mailLabel }}</span>
+          <span class="contact__mail-value">
+            {{ i18n.profile.email }}
+            <span class="contact__mail-arrow" aria-hidden="true">↗</span>
+          </span>
+        </a>
+
+        <div class="contact__socials" appReveal>
+          <span class="contact__socials-label">{{ i18n.content().contact.socialsLabel }}</span>
+          <ul class="contact__socials-list">
+            @for (social of i18n.profile.socials; track social.label) {
+              <li>
+                <a
+                  class="link-underline"
+                  [href]="social.href"
+                  [attr.aria-label]="social.label + ' — ' + social.handle"
+                  [attr.title]="social.handle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ social.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <p class="contact__note" appReveal>{{ i18n.content().contact.note }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact__pattern" aria-hidden="true"></div>
+</section>

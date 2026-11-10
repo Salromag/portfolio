@@ -1,0 +1,85 @@
+<header class="head" [class.is-scrolled]="scrolled()" [class.is-open]="open()">
+  <div class="head__inner">
+    <a class="brand" href="#inicio" (click)="closeMenu()">
+      <span class="brand__mark" aria-hidden="true">間</span>
+      <span class="brand__name">{{ i18n.profile.name }}</span>
+    </a>
+
+    <nav class="nav" [attr.aria-label]="i18n.content().ui.navLabel">
+      @for (item of i18n.content().nav; track item.href) {
+        <a class="nav__link" [href]="item.href">
+          <span class="nav__kanji" aria-hidden="true">{{ item.kanji }}</span>
+          <span class="nav__label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="head__actions">
+      <div class="lang" role="group" [attr.aria-label]="i18n.content().ui.language">
+        <button
+          type="button"
+          class="lang__btn"
+          [class.is-active]="i18n.is('es')"
+          [attr.aria-pressed]="i18n.is('es')"
+          (click)="i18n.set('es')"
+        >
+          ES
+        </button>
+        <span class="lang__sep" aria-hidden="true">/</span>
+        <button
+          type="button"
+          class="lang__btn"
+          [class.is-active]="i18n.is('en')"
+          [attr.aria-pressed]="i18n.is('en')"
+          (click)="i18n.set('en')"
+        >
+          EN
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="theme"
+        [attr.aria-pressed]="theme.isDark()"
+        [attr.aria-label]="theme.isDark() ? i18n.content().ui.themeLight : i18n.content().ui.themeDark"
+        [attr.title]="theme.isDark() ? i18n.content().ui.themeLight : i18n.content().ui.themeDark"
+        (click)="theme.toggle()"
+      >
+        <span class="theme__glyph" aria-hidden="true">{{ theme.isDark() ? '日' : '月' }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="burger"
+        [attr.aria-expanded]="open()"
+        aria-controls="site-menu"
+        [attr.aria-label]="open() ? i18n.content().ui.close : i18n.content().ui.menu"
+        (click)="toggleMenu()"
+      >
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+  </div>
+
+  <p class="sr-only" aria-live="polite">{{ i18n.content().ui.language }}: {{ i18n.is('es') ? 'Español' : 'English' }}</p>
+</header>
+
+<div id="site-menu" class="drawer" [class.is-open]="open()" [attr.aria-hidden]="!open()">
+  <nav class="drawer__nav" [attr.aria-label]="i18n.content().ui.navLabel">
+    @for (item of i18n.content().nav; track item.href; let i = $index) {
+      <a class="drawer__link" [href]="item.href" [style.--i]="i" (click)="closeMenu()">
+        <span class="drawer__num">{{ (i + 1).toString().padStart(2, '0') }}</span>
+        <span class="drawer__label">{{ item.label }}</span>
+        <span class="drawer__kanji" aria-hidden="true">{{ item.kanji }}</span>
+      </a>
+    }
+  </nav>
+
+  <div class="drawer__foot">
+    <a class="drawer__mail link-underline" [href]="'mailto:' + i18n.profile.email">
+      {{ i18n.profile.email }}
+    </a>
+    <span class="drawer__place">{{ i18n.profile.location }}</span>
+  </div>
+</div>

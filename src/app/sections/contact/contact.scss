@@ -1,0 +1,136 @@
+:host {
+  display: block;
+}
+
+.contact {
+  background: var(--paper-raised);
+  border-top: 1px solid var(--hair);
+  padding-bottom: 0;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: start;
+}
+
+.contact__title {
+  font-size: var(--step-4);
+}
+
+.contact__lead {
+  max-width: 42ch;
+  margin-top: 1.25rem;
+  font-weight: 300;
+  color: var(--ink-2);
+}
+
+.contact__actions {
+  padding-top: 0.5rem;
+}
+
+/* --- email -------------------------------------------------------- */
+
+.contact__mail {
+  display: block;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hair-strong);
+  transition: border-color 0.45s var(--ease);
+}
+
+.contact__mail-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.contact__mail-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.45rem;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.2;
+  transition: color 0.45s var(--ease);
+}
+
+.contact__mail-arrow {
+  font-size: 0.75em;
+  transition: transform 0.45s var(--ease);
+}
+
+.contact__mail:hover {
+  border-color: var(--shu);
+}
+
+.contact__mail:hover .contact__mail-value {
+  color: var(--shu);
+}
+
+.contact__mail:hover .contact__mail-arrow {
+  transform: translate(4px, -4px);
+}
+
+/* --- socials ------------------------------------------------------ */
+
+.contact__socials {
+  margin-top: 2rem;
+}
+
+.contact__socials-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.contact__socials-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  margin-top: 0.85rem;
+  font-size: 0.98rem;
+}
+
+.contact__note {
+  margin-top: 2.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* --- seigaiha band ------------------------------------------------ */
+
+.contact__pattern {
+  height: clamp(90px, 14vw, 160px);
+  margin-top: clamp(3rem, 8vw, 6rem);
+  opacity: 0.75;
+  background-image: radial-gradient(
+    circle at 50% 100%,
+    transparent 20%,
+    var(--hair-strong) 20% 21.6%,
+    transparent 21.6% 40%,
+    var(--hair-strong) 40% 41.6%,
+    transparent 41.6% 59%,
+    var(--hair-strong) 59% 60.6%,
+    transparent 60.6%
+  );
+  background-size: 92px 46px;
+  mask-image: linear-gradient(to bottom, transparent, #000 70%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%);
+}
+
+@media (max-width: 860px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

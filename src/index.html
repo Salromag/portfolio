@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Salva Romero — Desarrollador frontend</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Salva Romero, desarrollador frontend con diez años de experiencia en Angular, formularios dinámicos y librerías open source publicadas en npm.">
+  <meta name="theme-color" content="#f3efe6">
+  <meta name="color-scheme" content="light dark">
+
+  <script>
+    // Resolve the theme before first paint so there is no flash of the wrong palette.
+    (function () {
+      try {
+        var stored = localStorage.getItem('salva.portfolio.theme');
+        var dark = stored
+          ? stored === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Salva Romero — Desarrollador frontend">
+  <meta property="og:description" content="Interfaces que respiran: menos ruido, más intención.">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

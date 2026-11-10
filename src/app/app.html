@@ -1,0 +1,15 @@
+<a class="skip-link" href="#main">{{ i18n.content().ui.skipToContent }}</a>
+
+<div class="scroll-progress" aria-hidden="true" [style.transform]="'scaleX(' + progress() + ')'"></div>
+
+<app-site-header />
+
+<main id="main">
+  <app-hero />
+  <app-about />
+  <app-work />
+  <app-skills />
+  <app-contact />
+</main>
+
+<app-site-footer />

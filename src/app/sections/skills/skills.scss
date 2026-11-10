@@ -1,0 +1,114 @@
+:host {
+  display: block;
+}
+
+.skills__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.skills__title {
+  font-size: var(--step-4);
+}
+
+.skills__note {
+  max-width: 38ch;
+  font-weight: 300;
+  color: var(--ink-2);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-block: 1px solid var(--hair);
+}
+
+.skill {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.35rem);
+  transition: background-color 0.5s var(--ease);
+}
+
+/* Hairlines drawn per cell so the grid never shows as an empty slab. */
+.skill:nth-child(even) {
+  border-left: 1px solid var(--hair);
+}
+
+.skill:nth-child(n + 3) {
+  border-top: 1px solid var(--hair);
+}
+
+.skill:hover {
+  background: var(--paper-raised);
+}
+
+.skill__kanji {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.4rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  color: var(--hair-strong);
+}
+
+.skill__title {
+  font-size: var(--step-2);
+  padding-right: 3rem;
+}
+
+.skill__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.35rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--hair);
+}
+
+.skill__item {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--ink-2);
+}
+
+.skill__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.45rem;
+  height: 1px;
+  background: var(--shu);
+  opacity: 0.55;
+}
+
+@media (max-width: 860px) {
+  .skills__head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .skills__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .skill:nth-child(even) {
+    border-left: 0;
+  }
+
+  .skill:nth-child(n + 2) {
+    border-top: 1px solid var(--hair);
+  }
+}
+
+@media (max-width: 420px) {
+  .skill__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

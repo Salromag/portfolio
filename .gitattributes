@@ -1,0 +1,7 @@
+# Normalise line endings so Windows, macOS and the Linux CI agree.
+* text=auto eol=lf
+
+*.ico binary
+*.png binary
+*.jpg binary
+*.woff2 binary

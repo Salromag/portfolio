@@ -1,0 +1,34 @@
+<section class="about" id="sobre-mi">
+  <div class="u-container">
+    <div class="section-label">
+      <span class="section-label__kanji">{{ i18n.content().about.kanji }}</span>
+      <span class="section-label__text">{{ i18n.content().about.label }}</span>
+      <span class="section-label__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="about__grid">
+      <aside class="about__aside" aria-hidden="true">
+        <span class="vertical about__vertical">{{ i18n.content().about.vertical }}</span>
+      </aside>
+
+      <div class="about__body">
+        <h2 class="about__title" appReveal>{{ i18n.content().about.title }}</h2>
+
+        <div class="about__text">
+          @for (paragraph of i18n.content().about.paragraphs; track paragraph) {
+            <p class="about__p" appReveal>{{ paragraph }}</p>
+          }
+        </div>
+
+        <dl class="facts" appReveal [attr.aria-label]="i18n.content().about.factsLabel">
+          @for (fact of i18n.content().about.facts; track fact.label) {
+            <div class="facts__item">
+              <dt class="facts__label">{{ fact.label }}</dt>
+              <dd class="facts__value">{{ fact.value }}</dd>
+            </div>
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

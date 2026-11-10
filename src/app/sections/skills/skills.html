@@ -1,0 +1,28 @@
+<section class="skills" id="herramientas">
+  <div class="u-container">
+    <div class="section-label">
+      <span class="section-label__kanji">{{ i18n.content().skills.kanji }}</span>
+      <span class="section-label__text">{{ i18n.content().skills.label }}</span>
+      <span class="section-label__rule" aria-hidden="true"></span>
+    </div>
+
+    <header class="skills__head">
+      <h2 class="skills__title" appReveal>{{ i18n.content().skills.title }}</h2>
+      <p class="skills__note" appReveal>{{ i18n.content().skills.note }}</p>
+    </header>
+
+    <div class="skills__grid">
+      @for (group of i18n.content().skills.groups; track group.title; let i = $index) {
+        <article class="skill" appReveal [style.--d]="delay(i)">
+          <span class="skill__kanji" aria-hidden="true">{{ group.kanji }}</span>
+          <h3 class="skill__title">{{ group.title }}</h3>
+          <ul class="skill__list">
+            @for (item of group.items; track item) {
+              <li class="skill__item">{{ item }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

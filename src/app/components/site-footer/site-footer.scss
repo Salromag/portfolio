@@ -1,0 +1,52 @@
+:host {
+  display: block;
+}
+
+.foot {
+  background: var(--paper-raised);
+  border-top: 1px solid var(--hair);
+}
+
+.foot__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1.25rem clamp(1rem, 3vw, 2.5rem);
+  padding-block: 1.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+.foot__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.foot__kanji {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--shu);
+}
+
+.foot__note {
+  color: var(--ink-2);
+}
+
+.foot__top {
+  justify-self: end;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .foot__inner {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+
+  .foot__top {
+    justify-self: start;
+  }
+}
