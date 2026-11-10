@@ -1,8 +1,8 @@
 # 間 · Portfolio
 
 Portfolio personal bilingüe (ES / EN) de **Salva Romero**, desarrollador frontend con diez años de
-experiencia en Angular, formularios dinámicos y librerías open source. Estética japonesa
-minimalista: papel washi, tinta sumi, un único acento bermellón y mucho espacio negativo.
+experiencia en Angular, formularios dinámicos y librerías open source. Estética japonesa de tinta y
+pincel: papel washi, sumi, un único acento bermellón y un enso dibujado a trazo.
 
 Construido con **Angular 22**, componentes standalone y signals. Sin librerías de UI, sin
 frameworks de CSS: solo SCSS con design tokens.
@@ -121,6 +121,7 @@ los dos bloques.
 src/
 ├─ index.html                      fuentes, meta y favicon
 ├─ styles.scss                     tokens, reset, utilidades, grano, reveal
+├─ styles/_brush.scss              el trazo de pincel reutilizable (mask)
 └─ app/
    ├─ app.ts / .html / .scss       composición de la página + barra de progreso
    ├─ core/
@@ -133,10 +134,13 @@ src/
    │  └─ site-footer/
    └─ sections/
       ├─ hero/                     nombre, enso 円相 y llamadas a la acción
+      │  └─ enso.path.ts           trazo generado (no editar a mano)
       ├─ about/                    biografía + datos rápidos
       ├─ work/                     pestañas + lista editorial de proyectos
       ├─ skills/                   cuatro grupos de herramientas
       └─ contact/                  email, redes y banda seigaiha 青海波
+tools/
+└─ enso-gen.mjs                    genera el trazo del enso
 ```
 
 ---
@@ -153,13 +157,16 @@ Tokens en `src/styles.scss` (`:root`):
 | `--shu`            | `#b23a2b` | `#d9614c` | acento bermellón (朱), el único      |
 | `--hair`           | 14 % tinta| 13 % tinta| filetes de 1 px                      |
 | `--veil`           | 82 % papel| 82 % papel| fondo translúcido de la cabecera     |
-| `--font-display`   | Shippori Mincho | — | titulares y kanji                |
+| `--font-display`   | Yuji Boku | —      | titulares y kanji (pincel)           |
 | `--font-body`      | Zen Kaku Gothic New | — | texto                        |
 | `--font-mono`      | JetBrains Mono | — | etiquetas y números              |
 
 Detalles de la estética:
 
-- **円相 (enso)** en el hero: anillo fino con un giro lentísimo de 150 s.
+- **円相 (enso)** en el hero: trazo de pincel con grosor variable, generado por
+  `tools/enso-gen.mjs`, con un giro lentísimo de 150 s.
+- **Pinceladas**: el filete de cada sección, el subrayado de los enlaces y el indicador de las
+  pestañas son un mismo trazo irregular, aplicado como `mask` para que tome el color del texto.
 - **間 (ma)**: el hueco es parte del diseño; las secciones respiran con `--section-y`.
 - **Grano de papel**: capa `feTurbulence` fija en `body::after`.
 - **青海波 (seigaiha)**: ondas concéntricas dibujadas con `radial-gradient` al final del contacto.
@@ -167,6 +174,31 @@ Detalles de la estética:
 
 Las fuentes se cargan desde Google Fonts con `display=swap` y una pila de reserva del sistema, así
 que la página sigue siendo legible sin conexión.
+
+### Por qué los titulares van en minúscula
+
+Yuji Boku es una fuente de pincel con unas mayúsculas ambiguas: la **R** se lee como **A** y la
+**M** como una lambda. «Romero» parecía «Aomero» y «Menos» parecía «Λenos». Sus minúsculas, en
+cambio, son puro trazo y se leen perfectamente, así que los titulares (`h1`–`h4` y los nombres de
+proyecto) se fuerzan a minúscula.
+
+Eso deja un sistema tipográfico con dos voces: **pincel en minúscula** para lo que se dice y
+**mono en mayúscula** para lo que se etiqueta (`OPEN SOURCE`, `LIBRERÍA ANGULAR`). Si algún día
+cambias de fuente de display a una con mayúsculas legibles, quita el `text-transform` de `h1–h4`
+en `src/styles.scss` y de `.work__name` / `.drawer__label`.
+
+### El trazo del enso
+
+`tools/enso-gen.mjs` no dibuja un círculo con `stroke`: calcula dos bordes separados por un grosor
+variable a lo largo de 330° de arco y los une en una forma rellena. Así el trazo arranca grueso,
+engorda en el centro y muere en punta, como un pincel de verdad.
+
+```bash
+node tools/enso-gen.mjs     # reescribe src/app/sections/hero/enso.path.ts
+```
+
+La rugosidad del borde no está en el path, sino en un filtro SVG del componente
+(`feTurbulence` + `feDisplacementMap`), que es lo que hace que parezca tinta sobre papel.
 
 ---
 
@@ -180,7 +212,7 @@ que la página sigue siendo legible sin conexión.
 - Navegación por teclado con `:focus-visible` visible en todos los interactivos.
 - `prefers-reduced-motion`: desactiva giro, revelados y scroll suave.
 - Contraste de texto principal 13:1 sobre el papel.
-- Bundle inicial ≈ 167 kB (~47 kB comprimido); sin dependencias en runtime más allá de Angular.
+- Bundle inicial ≈ 193 kB (~53 kB comprimido); sin dependencias en runtime más allá de Angular.
 
 ---
 

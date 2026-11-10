@@ -30,18 +30,28 @@
 
     <aside class="hero__aside" aria-hidden="true">
       <div class="enso">
-        <svg class="enso__ring" viewBox="0 0 320 320" fill="none">
-          <circle cx="160" cy="160" r="148" stroke="currentColor" stroke-width="0.8" opacity="0.28" />
-          <circle
-            cx="160"
-            cy="160"
-            r="148"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-dasharray="812 118"
-            transform="rotate(-34 160 160)"
-          />
+        <svg class="enso__ring" viewBox="0 0 320 320">
+          <defs>
+            <filter id="enso-ink" x="-12%" y="-12%" width="124%" height="124%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.045"
+                numOctaves="3"
+                seed="7"
+                result="noise"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="6"
+                xChannelSelector="R"
+                yChannelSelector="G"
+                result="rough"
+              />
+              <feGaussianBlur in="rough" stdDeviation="0.35" />
+            </filter>
+          </defs>
+          <path [attr.d]="ensoPath" fill="currentColor" filter="url(#enso-ink)" />
         </svg>
         <span class="enso__kanji">間</span>
       </div>

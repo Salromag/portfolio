@@ -1,3 +1,5 @@
+@use '../../../styles/brush';
+
 :host {
   display: block;
 }
@@ -49,9 +51,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -1px;
-  height: 1px;
+  bottom: -3px;
+  height: 9px;
   background: var(--shu);
+  @include brush.stroke;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.45s var(--ease);
@@ -160,6 +163,7 @@
   font-size: clamp(1.85rem, 4.4vw, 2.9rem);
   line-height: 1;
   letter-spacing: -0.02em;
+  text-transform: lowercase;
   transition: color 0.45s var(--ease);
 }
 
