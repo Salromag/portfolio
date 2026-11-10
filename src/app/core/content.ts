@@ -118,7 +118,7 @@ export const PROFILE = {
   name: 'Salva Romero',
   location: 'Valencia, ES',
   // Placeholder: swap it for your real address before publishing.
-  email: 'hola@salromagu.dev',
+  email: 'salromagu@gmail.com',
   socials: [
     { label: 'GitHub', handle: '@Salromag', href: 'https://github.com/Salromag' },
     {
@@ -126,8 +126,8 @@ export const PROFILE = {
       handle: 'in/salva-romero-aguilar',
       href: 'https://www.linkedin.com/in/salva-romero-aguilar/',
     },
-    { label: 'npm', handle: '~salromagu', href: 'https://www.npmjs.com/~salromagu' },
-    { label: 'Email', handle: 'hola@salromagu.dev', href: 'mailto:hola@salromagu.dev' },
+    { label: 'Npm', handle: '~salromagu', href: 'https://www.npmjs.com/~salromagu' },
+    { label: 'Email', handle: 'salromagu@gmail.com', href: 'salromagu@gmail.co' },
   ],
 };
 
@@ -333,7 +333,7 @@ export const CONTENT: Record<Lang, PortfolioContent> = {
       workTabs: 'Work categories',
     },
     hero: {
-      kicker: 'Frontend developer — Valencia, Spain',
+      kicker: 'Frontend developer',
       nameKana: 'サルバ・ロメロ',
       tagline: 'Interfaces that breathe.',
       lead: 'Ten years building digital product with intent: less noise, more purpose. I work between Figma and the browser caring about typography, accessibility and performance — and I maintain a handful of Angular libraries published on npm.',
