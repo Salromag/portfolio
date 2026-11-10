@@ -171,9 +171,9 @@ export const CONTENT: Record<Lang, PortfolioContent> = {
       vertical: 'について',
       title: 'Menos ruido, más intención.',
       paragraphs: [
-        'Soy Salva Romero, desarrollador frontend con diez años de experiencia. Empecé maquetando sitios a mano y he acabado construyendo aplicaciones Angular, sistemas de diseño y librerías que otros equipos instalan desde npm.',
-        'Me especializo en Angular y en diseño de componentes: APIs que no necesitan manual, formularios que se generan a partir de un esquema y paquetes que se publican con versionado semántico.',
-        'Trabajo bien donde diseño y código comparten mesa: reviso, documento y dejo el proyecto mejor de como lo encontré.',
+        'Soy Salva Romero, desarrollador frontend con diez años de experiencia. Empecé haciendo webs a mano, sin librerías, y sigo con la misma idea: que el contenido se lea claro y sin ruido.',
+        'Hoy trabajo sobre todo con Angular, diseño de arquitectura web microfrontends y aplicaciones monolíticas, sistemas de diseño y accesibilidad, Me gusta estar al día, aunque con criterio. Y cuando diseño y código comparten mesa, es cuando mejor trabajo.',
+        'Y fuera del código, me pierden las motos y el diseño japonés.',
       ],
       factsLabel: 'Datos rápidos',
       facts: [
@@ -348,9 +348,9 @@ export const CONTENT: Record<Lang, PortfolioContent> = {
       vertical: 'について',
       title: 'Less noise, more intent.',
       paragraphs: [
-        "I'm Salva Romero, a frontend developer with ten years of experience. I started hand-coding websites and ended up building Angular applications, design systems and libraries that other teams install from npm.",
-        'I specialise in Angular and component design: APIs nobody needs a manual for, forms generated from a schema, and packages shipped with semantic versioning.',
-        'I do my best work where design and code share a table: reviewing, documenting and leaving the project better than I found it.',
+        'I’m Salva Romero, a frontend developer with ten years of experience. I started out building websites by hand, without libraries, and I still hold on to the same idea: content should read clearly and without noise.',
+        'Today I mainly work with Angular, web architecture design for microfrontends and monolithic applications, design systems, and accessibility. I like staying up to date, but with judgement. And when design and code share the same table, that’s when I do my best work.',
+        'And outside of code, motorcycles and Japanese design are my weakness.',
       ],
       factsLabel: 'Quick facts',
       facts: [
